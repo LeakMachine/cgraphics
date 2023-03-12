@@ -95,9 +95,15 @@ namespace labwork1
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
-        private void фильтрСобеляToolStripMenuItem_Click(object sender, EventArgs e)
+        private void xToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Filters filter = new SobelFilter();
+            Filters filter = new SobelFilter_X();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void yToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new SobelFilter_Y();
             backgroundWorker1.RunWorkerAsync(filter);
         }
     }

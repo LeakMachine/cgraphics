@@ -144,32 +144,45 @@ namespace labwork1
                     kernel[i, j] /= norm;
         }
     }
-    class SobelFilter : MatrixFilter
+    class SobelFilter_X : MatrixFilter
     {
-        public SobelFilter()
+        public SobelFilter_X()
         {
-            createSobelKernel(3);
+            int sizeX = 3;
+            int sizeY = 3;
+
+            kernel = new float[sizeX, sizeY];
+
+            kernel[0, 0] = -1;
+            kernel[0, 1] = 0;
+            kernel[0, 2] = 1;
+            kernel[1, 0] = -2;
+            kernel[2, 1] = 0;
+            kernel[1, 2] = 2;
+            kernel[2, 0] = -1;
+            kernel[2, 1] = 0;
+            kernel[2, 2] = 1;
         }
-        public void createSobelKernel(int radius)
+    }
+
+    class SobelFilter_Y : MatrixFilter
+    {
+        public SobelFilter_Y()
         {
-            int size = radius;
-            float[,] temp1 = new float[size, size];
-            float[,] temp2 = new float[size, size];
-            kernel = new float[size, size];
-            int[,] operatorX = { { -1, 0, 1 }, { -2, 0, 2 }, { -1, 0, 1 } };
-            int[,] operatorY = { { -1, -2, -1 }, { 0, 0, 0 }, { 1, 2, 1 } };
-            float sum1 = 0.0f, sum2 = 0.0f;
-            for (int i = 0; i < size; i++)
-                for (int j = 0; j < size; j++)
-                    sum1 += temp1[i, j] * operatorX[i, j];
-            for (int i = 0; i < size; i++)
-                for (int j = 0; j < size; j++)
-                    temp2[i, j] *= operatorY[i, j];
-            for (int i = 0; i < size; i++)
-                for (int j = 0; j < size; j++)
-                {
-                    kernel[i, j] = Math.Sqrt((int)(sum1 * sum1) + (int)(sum2 * sum2));
-                }
+            int sizeX = 3;
+            int sizeY = 3;
+
+            kernel = new float[sizeX, sizeY];
+
+            kernel[0, 0] = -1;
+            kernel[0, 1] = -2;
+            kernel[0, 2] = -1;
+            kernel[1, 0] = 0;
+            kernel[2, 1] = 0;
+            kernel[1, 2] = 0;
+            kernel[2, 0] = 1;
+            kernel[2, 1] = 2;
+            kernel[2, 2] = 1;
         }
     }
 }
