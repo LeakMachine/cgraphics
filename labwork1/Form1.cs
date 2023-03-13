@@ -106,5 +106,23 @@ namespace labwork1
             Filters filter = new SobelFilter_Y();
             backgroundWorker1.RunWorkerAsync(filter);
         }
+
+        private void резкостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new SharpnessFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void тиснениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new EmbossingFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void motionBlurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new MotionBlurFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
     }
 }
